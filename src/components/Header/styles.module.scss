@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    div.left{
+        h1{
+            color: var(--green-500);
+            margin: 2rem 8rem;
+        }
+    }
+    div.right{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 2rem 5.5rem;
+        a{
+            padding: 1rem;
+            &:hover{
+                cursor: pointer;
+                filter: opacity(0.5);
+            }
+            &:last-child{
+                background-color: var(--white);
+                color: var(--green-500);
+                border-radius: 5px;
+            }
+        }
+        
+    }
+}
