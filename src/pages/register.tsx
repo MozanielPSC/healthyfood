@@ -93,14 +93,17 @@ export default function Register() {
                 setMessage("")
             }, 2000)
         } else {
-            localStorage.setItem('username', user.name)
-            localStorage.setItem('usercpf', user.cpf);
-            localStorage.setItem('userbirthday', user.birthday);
-            localStorage.setItem('usercep', user.cep)
-            localStorage.setItem('userddd', user.ddd)
-            localStorage.setItem('userlogradouro', user.logradouro)
-            localStorage.setItem('userbairro', user.bairro)
-            localStorage.setItem('userlocalidade', user.localidade)
+            if (typeof window !== undefined) {
+                localStorage.setItem('username', user.name)
+                localStorage.setItem('usercpf', user.cpf);
+                localStorage.setItem('userbirthday', user.birthday);
+                localStorage.setItem('usercep', user.cep)
+                localStorage.setItem('userddd', user.ddd)
+                localStorage.setItem('userlogradouro', user.logradouro)
+                localStorage.setItem('userbairro', user.bairro)
+                localStorage.setItem('userlocalidade', user.localidade)
+            }
+
             setCookie(null, 'user.name', user.name, {
                 maxAge: 30,
                 path: '/',
@@ -168,25 +171,25 @@ export default function Register() {
                     <h2>Aqui estão suas informações</h2>
                     <div>
                         <ul>
-                            <li> <span>Cpf: <span> {localStorage.getItem('usercpf')} </span></span></li>
-                            <li> <span>Birthday: <span>{localStorage.getItem('userbirthday')}</span>  </span></li>
-                           
+                            <li> <span>Cpf: <span> { typeof window !== undefined ? localStorage.getItem('usercpf'):""} </span></span></li>
+                            <li> <span>Birthday: <span>{typeof window !== undefined ? localStorage.getItem('userbirthday'): ""}</span>  </span></li>
+
                         </ul>
                         <ul>
-                            <li> <span>DDD: <span>{localStorage.getItem('userddd')}</span>  </span></li>
-                            <li><span>Logradouro: <span> {localStorage.getItem('userlogradouro')}</span>  </span></li>
+                            <li> <span>DDD: <span>{typeof window !== undefined ? localStorage.getItem('userddd'):""}</span>  </span></li>
+                            <li><span>Logradouro: <span> {typeof window !== undefined? localStorage.getItem('userlogradouro'):""}</span>  </span></li>
                         </ul>
                         <ul>
-                            <li> <span>Neighborhood: <span>{localStorage.getItem('userbairro')}</span>  </span></li>
-                            <li> <span>City:  <span>{localStorage.getItem('userlocalidade')}</span>  </span></li>
-                            
+                            <li> <span>Neighborhood: <span>{typeof window !== undefined ? localStorage.getItem('userbairro'):""}</span>  </span></li>
+                            <li> <span>City:  <span>{(typeof window !== undefined) ? localStorage.getItem('userlocalidade'):""}</span>  </span></li>
+
                         </ul>
                         <ul>
-                        <li> <span>CEP: <span>{localStorage.getItem('usercep')} </span>  </span></li>
+                            <li> <span>CEP: <span>{typeof window !== undefined ? localStorage.getItem('usercep'):""} </span>  </span></li>
                         </ul>
                     </div>
                     <Link href="/">
-                    <a>Página inicial</a>
+                        <a>Página inicial</a>
                     </Link>
                 </div>
             </Modal>
