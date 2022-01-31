@@ -15,6 +15,11 @@
         div{
             margin: 10rem 10rem;
             font-weight: bold;
+            @media (max-width: 768px) {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
             p{
                 font-size: 2rem;
                 max-width: 23rem;
@@ -40,6 +45,11 @@
                 color: var(--white);
                 border-radius: 5px;
                 transition: filter 0.2s;
+                @media (max-width: 768px) {
+                    width: 100%;
+                    margin-left: unset;
+                    margin-top: 1rem;
+                }
                 &:hover{
                     filter: brightness(0.9)
                 }
@@ -53,22 +63,37 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 768px) {
+        justify-content: space-around;
+    }
     div.left{
         color: var(--blue-500);
         display: flex;
         align-items: center;
         small{
             margin-left: 5rem;
+            @media (max-width: 768px) {
+               margin-left: 1rem;
+            }
         }
-       
     }
     div.right{
         color: var(--gray-300);
         display: flex;
         align-items: center;
         padding-right: 5rem;
+        @media (max-width: 768px) {
+            padding-right: unset;
+        }
         small{
             margin-right: 2rem;
+            @media (max-width: 768px) {
+                margin-right: 1rem;
+            }
+            transition: filter 0.2s;
+            &:hover{
+                filter: opacity(0.5);
+            }
         }
     }   
 }

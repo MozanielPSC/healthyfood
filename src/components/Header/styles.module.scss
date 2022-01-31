@@ -1,31 +1,91 @@
-.container{
+.container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    div.left{
-        h1{
+    div.mobileNav {
+        display: none;
+    }
+    div.mobileNavActive {
+        display: none;
+    }
+    div.left {
+        h1 {
             color: var(--green-500);
             margin: 2rem 8rem;
+            @media (max-width: 768px) {
+                margin: 2rem 1rem;
+            }
         }
     }
-    div.right{
+    div.right {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        margin: 2rem 5.5rem;
-        a{
+        margin: 2rem unset;
+        div {
+            display: none;
+        }
+        a {
             padding: 1rem;
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 filter: opacity(0.5);
             }
-            &:last-child{
+            &.last {
                 background-color: var(--white);
                 color: var(--green-500);
                 border-radius: 5px;
+                margin-right: 1rem;
             }
         }
-        
+        @media (max-width: 768px) {
+            a {
+                display: none;
+            }
+            div {
+                display: flex;
+                color: var(--green-500);
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        background-color: var(--white);
+        height: 10vh;
+        position: fixed;
+        div.mobileNavActive {
+            display: flex;
+            background-color: var(--white);
+            color: var(--green-500);
+            height: 90vh;
+            top: 10vh;
+            position: absolute;
+            width: 80vw;
+            right: 0;
+            ul{
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                padding-left: 4rem;
+                padding-top: 5rem;
+                width: 100%;
+                font-size: 1.2rem;
+                li{
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    padding: 1rem;
+                    &.last {
+                        background-color: var(--green-500);
+                        color: var(--white);
+                        border-radius: 5px;
+                        margin-right: 1rem;
+                        width: 10rem;
+                    }
+                }
+            }
+        }
     }
 }
