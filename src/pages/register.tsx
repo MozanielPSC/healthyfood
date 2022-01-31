@@ -2,8 +2,8 @@ import styles from "./register.module.scss";
 import { FormEvent, useContext, useState, useEffect } from "react";
 import { parseCookies, setCookie } from 'nookies';
 import { InputMask } from 'react-masked'
-import Modal from 'react-modal';
 import Link from "next/link";
+import { FinalModal } from "../components/FinalModal";
 
 interface User {
     name: string,
@@ -35,6 +35,18 @@ export default function Register() {
     }
     function handleCloseRegisterModal() {
         setRegisterModal(false)
+    }
+    function verifyClient() {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('username', user.name)
+            localStorage.setItem('usercpf', user.cpf);
+            localStorage.setItem('userbirthday', user.birthday);
+            localStorage.setItem('usercep', user.cep)
+            localStorage.setItem('userddd', user.ddd)
+            localStorage.setItem('userlogradouro', user.logradouro)
+            localStorage.setItem('userbairro', user.bairro)
+            localStorage.setItem('userlocalidade', user.localidade)
+        }
     }
     function verifyFields() {
         if (user.name === "") {
@@ -93,17 +105,7 @@ export default function Register() {
                 setMessage("")
             }, 2000)
         } else {
-            if (typeof window !== undefined) {
-                localStorage.setItem('username', user.name)
-                localStorage.setItem('usercpf', user.cpf);
-                localStorage.setItem('userbirthday', user.birthday);
-                localStorage.setItem('usercep', user.cep)
-                localStorage.setItem('userddd', user.ddd)
-                localStorage.setItem('userlogradouro', user.logradouro)
-                localStorage.setItem('userbairro', user.bairro)
-                localStorage.setItem('userlocalidade', user.localidade)
-            }
-
+            verifyClient();
             setCookie(null, 'user.name', user.name, {
                 maxAge: 30,
                 path: '/',
@@ -164,35 +166,8 @@ export default function Register() {
                 </form>
                 <h2>{message}</h2>
             </div>
-            <Modal isOpen={registerModal} onRequestClose={handleCloseRegisterModal}>
-                <div className={styles.modal}>
-                    <h1>Seja bem vindo ao HealthyFood</h1>
-                    <h2>{localStorage.getItem('username')}</h2>
-                    <h2>Aqui estão suas informações</h2>
-                    <div>
-                        <ul>
-                            <li> <span>Cpf: <span> { typeof window !== undefined ? localStorage.getItem('usercpf'):""} </span></span></li>
-                            <li> <span>Birthday: <span>{typeof window !== undefined ? localStorage.getItem('userbirthday'): ""}</span>  </span></li>
-
-                        </ul>
-                        <ul>
-                            <li> <span>DDD: <span>{typeof window !== undefined ? localStorage.getItem('userddd'):""}</span>  </span></li>
-                            <li><span>Logradouro: <span> {typeof window !== undefined? localStorage.getItem('userlogradouro'):""}</span>  </span></li>
-                        </ul>
-                        <ul>
-                            <li> <span>Neighborhood: <span>{typeof window !== undefined ? localStorage.getItem('userbairro'):""}</span>  </span></li>
-                            <li> <span>City:  <span>{(typeof window !== undefined) ? localStorage.getItem('userlocalidade'):""}</span>  </span></li>
-
-                        </ul>
-                        <ul>
-                            <li> <span>CEP: <span>{typeof window !== undefined ? localStorage.getItem('usercep'):""} </span>  </span></li>
-                        </ul>
-                    </div>
-                    <Link href="/">
-                        <a>Página inicial</a>
-                    </Link>
-                </div>
-            </Modal>
+            <FinalModal isOpen={registerModal} onRequestClose={handleCloseRegisterModal}/>
+                
         </div>
     )
 }
