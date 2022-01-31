@@ -30,7 +30,7 @@ export default function Register() {
     });
     const [registerModal, setRegisterModal] = useState(false);
     const [message, setMessage] = useState("");
-    const [awaits,setAwaits] = useState(false);
+    const [awaits, setAwaits] = useState(false);
     function handleOpenRegisterModal() {
         setRegisterModal(true)
     }
@@ -97,9 +97,9 @@ export default function Register() {
 
 
     }, [user.cep]);
-    useEffect(()=>{
+    useEffect(() => {
         verifyClient();
-    },[awaits]);
+    }, [awaits]);
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
@@ -109,45 +109,45 @@ export default function Register() {
                 setMessage("")
             }, 2000)
         } else {
-            if(awaits){
+            if (awaits) {
                 setAwaits(false)
-            }else{
+            } else {
                 setAwaits(true)
             }
-            setCookie(null, 'user.name', user.name, {
-                maxAge: 30,
+            setCookie(null, 'name', user.name, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.cpf', user.cpf, {
-                maxAge: 30,
+            setCookie(null, 'cpf', user.cpf, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.birthday', user.birthday, {
-                maxAge: 30,
+            setCookie(null, 'birthday', user.birthday, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.cep', user.cep, {
-                maxAge: 30,
+            setCookie(null, 'cep', user.cep, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.ddd', user.ddd, {
-                maxAge: 30,
+            setCookie(null, 'ddd', user.ddd, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.uf', user.uf, {
-                maxAge: 30,
+            setCookie(null, 'uf', user.uf, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.logradouro', user.logradouro, {
-                maxAge: 30,
+            setCookie(null, 'logradouro', user.logradouro, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.bairro', user.bairro, {
-                maxAge: 30,
+            setCookie(null, 'bairro', user.bairro, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
-            setCookie(null, 'user.localidade', user.localidade, {
-                maxAge: 30,
+            setCookie(null, 'localidade', user.localidade, {
+                maxAge: 30*24*60*60,
                 path: '/',
             })
             handleOpenRegisterModal();
@@ -174,8 +174,8 @@ export default function Register() {
                 </form>
                 <h2>{message}</h2>
             </div>
-            <FinalModal isOpen={registerModal} onRequestClose={handleCloseRegisterModal}/>
-                
+            <FinalModal isOpen={registerModal} onRequestClose={handleCloseRegisterModal} />
+
         </div>
     )
 }

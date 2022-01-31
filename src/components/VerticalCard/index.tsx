@@ -1,14 +1,19 @@
 import styles from "./styles.module.scss"
 
-export function VerticalCard() {
+interface CardProps {
+    imglabel: string,
+    text: string,
+    profileimg: string,
+    username: string
+}
+export function VerticalCard(props: CardProps) {
     return (
         <div className={styles.card}>
-            <img src="/images/blog_image_1.svg" />
-            <h2>Quick-start guide
-                to nuts and seeds</h2>
+            <img src={props.imglabel} />
+            <h3>{props.text}</h3>
             <div className={styles.footer}>
-                <img src="/images/perfil2.jpg" />
-                <span>Kevin Ibrahim</span>
+                <img src={props.profileimg} />
+                <span>{props.username}</span>
             </div>
         </div>
     )

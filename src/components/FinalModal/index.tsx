@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import styles from "./styles.module.scss";
-import { Component } from 'react';
+import { parseCookies } from "nookies";
 interface CommentsModalProps {
     isOpen: boolean;
     onRequestClose: () => void;
@@ -10,27 +10,20 @@ interface CommentsModalProps {
 export function FinalModal({ isOpen, onRequestClose }: CommentsModalProps) {
     const [user, setUser] = useState<any>({});
     function getLocalStorage() {
-        if (typeof window !== 'undefined') {
-            let username = localStorage.getItem('username');
-            let cpf = localStorage.getItem('usercpf');
-            let birthday = localStorage.getItem('userbirthday');
-            let cep = localStorage.getItem('usercep');
-            let ddd = localStorage.getItem('userddd');
-            let logradouro = localStorage.getItem('userlogradouro');
-            let bairro = localStorage.getItem('userbairro');
-            let localidade = localStorage.getItem('userlocalidade');
-            if (username && cpf && birthday && cep && ddd && logradouro && bairro && localidade)
-                setUser({
-                    username: username,
-                    cpf: cpf,
-                    birthday: birthday,
-                    cep: cep,
-                    ddd: ddd,
-                    logradouro: logradouro,
-                    bairro: bairro,
-                    localidade: localidade
-                })
-        }
+        const cookies = parseCookies();
+        console.log(cookies)
+        setUser({
+            bairro: cookies.bairro,
+            birthday: cookies.birthday,
+            cep: cookies.cep,
+            cpf: cookies.cpf,
+            ddd: cookies.ddd,
+            localidade: cookies.localidade,
+            logradouro: cookies.logradouro,
+            name: cookies.name,
+            uf: cookies.uf
+        })
+
     }
     useEffect(() => {
         getLocalStorage()
