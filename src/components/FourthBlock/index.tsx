@@ -5,17 +5,18 @@ import { BsArrowRight, BsArrowLeft } from "react-icons/bs"
 
 
 export function FourthBlock() {
-  const [data, setData] = useState([]);
+  const [style, setStyle] = useState(styles.disabled);
   const carousel = useRef(null);
-
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
+    setStyle(styles.disabled);
   };
 
   const handleRightClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft += carousel.current.offsetWidth;
+    setStyle(styles.active);
   };
   return (
     <>
@@ -31,7 +32,7 @@ export function FourthBlock() {
           <VerticalCard />
           <VerticalCard />
           <div className={styles.buttons}>
-            <button onClick={handleLeftClick}>
+            <button onClick={handleLeftClick} className={style}>
               <BsArrowLeft />
             </button>
             <button onClick={handleRightClick}>

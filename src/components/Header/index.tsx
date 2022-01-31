@@ -31,7 +31,7 @@ export function Header() {
                 </Link>
                 <IconContext.Provider value={{ size: "2em" }}>
                     <div>
-                        <GoThreeBars onClick={showMobileNav} />
+                        <GoThreeBars className={styles.bars} onClick={showMobileNav} />
                     </div>
                 </IconContext.Provider>
             </div>
@@ -47,7 +47,9 @@ export function Header() {
                         JOIN
                     </li>
                     <li className={styles.last}>
+                        <Link href={"/register"}>
                         <a>REGISTER</a>
+                        </Link>
                     </li>
                 </ul>
             </div>

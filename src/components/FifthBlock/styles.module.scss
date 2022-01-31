@@ -23,6 +23,7 @@
             p{
                 font-size: 2rem;
                 max-width: 23rem;
+                font-family: 'Mulish', sans-serif;
             }
             input{
                 padding: 0.6rem;
@@ -33,6 +34,7 @@
                 outline: none;
                 &::placeholder{
                     color: var(--gray-300);
+                    font-family: 'Mulish', sans-serif;
                 }
             }
             button{
@@ -45,6 +47,7 @@
                 color: var(--white);
                 border-radius: 5px;
                 transition: filter 0.2s;
+                font-family: 'Mulish', sans-serif;
                 @media (max-width: 768px) {
                     width: 100%;
                     margin-left: unset;
@@ -63,6 +66,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-family: 'Mulish', sans-serif;
     @media (max-width: 768px) {
         justify-content: space-around;
     }
@@ -74,6 +78,7 @@
             margin-left: 5rem;
             @media (max-width: 768px) {
                margin-left: 1rem;
+               margin-right: 1rem ;
             }
         }
     }

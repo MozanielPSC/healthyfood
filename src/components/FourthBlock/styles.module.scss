@@ -8,12 +8,14 @@
         margin-top: 2rem;
         color: var(--blue-500);
         text-align: center;
+        font-family: 'Montserrat', sans-serif;
     }
     p {
         color: var(--blue-300);
         margin-top: 1rem;
         text-align: center;
         max-width: 30rem;
+        font-family: 'Poppins', sans-serif;
     }
     div.carousel {
         margin-top: 1rem;
@@ -48,8 +50,11 @@
                 color: var(--green-500);
                 margin-right: 2rem;
                 margin-left: 2rem;
+                &.disabled{
+                    visibility: hidden;
+                }
                 &.active{
-                    display: none;
+
                 }
             }
         }
