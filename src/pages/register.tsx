@@ -30,6 +30,7 @@ export default function Register() {
     });
     const [registerModal, setRegisterModal] = useState(false);
     const [message, setMessage] = useState("");
+    const [awaits,setAwaits] = useState(false);
     function handleOpenRegisterModal() {
         setRegisterModal(true)
     }
@@ -96,6 +97,9 @@ export default function Register() {
 
 
     }, [user.cep]);
+    useEffect(()=>{
+        verifyClient();
+    },[awaits]);
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
@@ -105,7 +109,11 @@ export default function Register() {
                 setMessage("")
             }, 2000)
         } else {
-            verifyClient();
+            if(awaits){
+                setAwaits(false)
+            }else{
+                setAwaits(true)
+            }
             setCookie(null, 'user.name', user.name, {
                 maxAge: 30,
                 path: '/',
