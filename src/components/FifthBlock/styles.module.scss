@@ -1,43 +1,39 @@
-.container{
-    background-image: url('/images/bloco_final_image.svg');
+.container {
+    background-image: url("/images/bloco_final_image.svg");
     background-repeat: no-repeat;
     background-position: right;
     height: 90vh;
     display: flex;
     align-items: center;
     flex-direction: column;
-    div.body{
+    div.body {
         display: flex;
         align-items: center;
         justify-content: left;
         width: 100%;
         color: var(--blue-500);
-        div{
+        div {
             margin: 10rem 10rem;
             font-weight: bold;
-            @media (max-width: 768px) {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-            }
-            p{
+            max-width: 100%;
+            p {
                 font-size: 2rem;
                 max-width: 23rem;
-                font-family: 'Mulish', sans-serif;
+                font-family: "Mulish", sans-serif;
             }
-            input{
+            input {
                 padding: 0.6rem;
                 margin-top: 2rem;
                 width: 18rem;
                 border: 1px solid var(--blue-500);
                 border-radius: 5px;
                 outline: none;
-                &::placeholder{
+                &::placeholder {
                     color: var(--gray-300);
-                    font-family: 'Mulish', sans-serif;
+                    font-family: "Mulish", sans-serif;
                 }
             }
-            button{
+            button {
                 padding: 0.7rem 0.7rem;
                 margin-top: 2rem;
                 margin-left: 1rem;
@@ -47,42 +43,65 @@
                 color: var(--white);
                 border-radius: 5px;
                 transition: filter 0.2s;
-                font-family: 'Mulish', sans-serif;
-                @media (max-width: 768px) {
-                    width: 100%;
-                    margin-left: unset;
-                    margin-top: 1rem;
-                }
-                &:hover{
-                    filter: brightness(0.9)
+                font-family: "Mulish", sans-serif;
+                &:hover {
+                    filter: brightness(0.9);
                 }
             }
         }
-        
     }
 }
-.footer{
+@media (max-width: 768px) {
+    .container {
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        div.body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            margin: auto auto;
+            div {
+                margin: auto auto;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                button {
+                    width: 18rem;
+                    margin-left: unset;
+                }
+            }
+        }
+    }
+}
+.footer {
     height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: 'Mulish', sans-serif;
+    font-family: "Mulish", sans-serif;
     @media (max-width: 768px) {
         justify-content: space-around;
     }
-    div.left{
+    div.left {
         color: var(--blue-500);
         display: flex;
         align-items: center;
-        small{
+        small {
             margin-left: 5rem;
             @media (max-width: 768px) {
-               margin-left: 1rem;
-               margin-right: 1rem ;
+                margin-left: 1rem;
+                margin-right: 1rem;
             }
         }
     }
-    div.right{
+    div.right {
         color: var(--gray-300);
         display: flex;
         align-items: center;
@@ -90,15 +109,15 @@
         @media (max-width: 768px) {
             padding-right: unset;
         }
-        small{
+        small {
             margin-right: 2rem;
             @media (max-width: 768px) {
                 margin-right: 1rem;
             }
             transition: filter 0.2s;
-            &:hover{
+            &:hover {
                 filter: opacity(0.5);
             }
         }
-    }   
+    }
 }

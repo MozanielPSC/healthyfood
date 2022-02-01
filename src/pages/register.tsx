@@ -3,7 +3,7 @@ import { FormEvent, useContext, useState, useEffect } from "react";
 import { parseCookies, setCookie } from 'nookies';
 import { InputMask } from 'react-masked'
 import Link from "next/link";
-import { FinalModal } from "../components/FinalModal";
+import Modal from "react-modal";
 
 interface User {
     name: string,
@@ -31,6 +31,7 @@ export default function Register() {
     const [registerModal, setRegisterModal] = useState(false);
     const [message, setMessage] = useState("");
     const [awaits, setAwaits] = useState(false);
+    const [cookies, setCookies] = useState<User | any>({})
     function handleOpenRegisterModal() {
         setRegisterModal(true)
     }
@@ -101,7 +102,7 @@ export default function Register() {
         verifyClient();
     }, [awaits]);
 
-    async function handleSubmit(event: FormEvent) {
+    function handleSubmit(event: FormEvent) {
         event.preventDefault();
         if (!verifyFields()) {
             setMessage("Verify all fields before continue")
@@ -115,40 +116,53 @@ export default function Register() {
                 setAwaits(true)
             }
             setCookie(null, 'name', user.name, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'cpf', user.cpf, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'birthday', user.birthday, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'cep', user.cep, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'ddd', user.ddd, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'uf', user.uf, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'logradouro', user.logradouro, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'bairro', user.bairro, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
             setCookie(null, 'localidade', user.localidade, {
-                maxAge: 30*24*60*60,
+                maxAge: 30 * 24 * 60 * 60,
                 path: '/',
+            })
+
+            const aux = parseCookies();
+            setCookies({
+                name: aux.name,
+                birthday: aux.birthday,
+                cpf: aux.cpf,
+                cep: aux.cep,
+                uf: aux.uf,
+                ddd: aux.ddd,
+                bairro: aux.bairro,
+                localidade: aux.localidade,
+                logradouro: aux.logradouro,
             })
             handleOpenRegisterModal();
         }
@@ -160,6 +174,7 @@ export default function Register() {
         <div className={styles.container}>
             <div className={styles.main}>
                 <h1>Register on Healthy Food</h1>
+                <h2>{message}</h2>
                 <form>
                     <input type="text" placeholder="Name" onChange={(e) => setUser({ ...user, name: e.target.value })} />
                     <InputMask mask="99/99/9999" placeholder="Birthday" onChange={(e: any) => setUser({ ...user, birthday: e.target.value })}></InputMask>
@@ -172,9 +187,38 @@ export default function Register() {
                     <input type="text" value={user.ddd ? user.ddd : ""} placeholder="DDD" disabled />
                     <input onClick={handleSubmit} className={styles.submit} type="submit" value="REGISTER" />
                 </form>
-                <h2>{message}</h2>
+
             </div>
-            <FinalModal isOpen={registerModal} onRequestClose={handleCloseRegisterModal} />
+            <Modal onRequestClose={handleCloseRegisterModal} isOpen={registerModal}>
+                <div className={styles.modal}>
+                    <h1>Seja bem vindo ao HealthyFood</h1>
+                    <h2>{cookies.name}</h2>
+                    <h2>Aqui estão suas informações</h2>
+                    <div>
+                        <ul>
+                            <li> <span>Cpf: <span>{cookies.cpf}  </span></span></li>
+                            <li> <span>Birthday: <span>{cookies.birthday}</span>  </span></li>
+
+                        </ul>
+                        <ul>
+                            <li> <span>DDD: <span>{cookies.ddd} </span>  </span></li>
+                            <li><span>Logradouro: <span>{cookies.logradouro} </span>  </span></li>
+                        </ul>
+                        <ul>
+                            <li> <span>Neighborhood: <span>{cookies.bairro}</span>  </span></li>
+                            <li> <span>City:  <span>{cookies.localidade}</span>  </span></li>
+
+                        </ul>
+                        <ul>
+                            <li> <span>CEP: <span>{cookies.cep}</span>  </span></li>
+                        </ul>
+                    </div>
+                    <Link href="/">
+                        <a>Página inicial</a>
+                    </Link>
+                </div>
+            </Modal>
+
 
         </div>
     )

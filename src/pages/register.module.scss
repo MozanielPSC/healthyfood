@@ -1,13 +1,14 @@
 .container {
     height: 100vh;
-    width: 100vw;
     padding-left: 15rem;
     padding-right: 15rem;
     padding-top: 1rem;
     background-color: var(--green-100);
     @media (max-width: 768px) {
-        padding: unset;
-        height: 100%;
+        max-height: fit-content;
+        max-width: fit-content;
+        padding-left: unset;
+        padding-right: unset;
     }
     div.main {
         background-color: var(--white);
@@ -18,18 +19,25 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        @media (max-width: 768px) {
+            height: 100%;
+            width: 100%;
+            padding: unset;
+            box-shadow: unset;
+            border-radius: unset;
+        }
         h1 {
             color: var(--blue-500);
             text-align: center;
             padding: 2rem;
             max-width: 20rem;
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
         }
         h2 {
             color: var(--green-500);
             text-align: center;
             max-width: 20rem;
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
         }
         form {
             display: flex;
@@ -38,6 +46,17 @@
             flex-wrap: wrap;
             width: 100%;
             justify-content: space-around;
+            height: 100%;
+            width: 100%;
+            padding: 1rem;
+            @media (max-width: 768px) {
+               display: flex;
+               align-items: center;
+               flex-direction: column;
+               justify-content: center;
+               padding: unset;
+            }
+
             input {
                 padding: 0.5rem;
                 margin-bottom: 2rem;
@@ -64,5 +83,122 @@
         }
     }
 }
-
-
+@media (max-width: 768px) {
+    .container {
+        height: 100%;
+        width: 100%;
+        padding-left: unset;
+        padding-right: unset;
+        padding-top: unset;
+        background-color: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div.main {
+            background-color: var(--white);
+            width: 100vw;
+            height: 100%;
+            border-radius: unset;
+            box-shadow: 2px 2px 20px var(--green-500);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            h1 {
+                color: var(--blue-500);
+                text-align: center;
+                padding: 2rem;
+                max-width: 20rem;
+                font-family: "Montserrat", sans-serif;
+            }
+            h2 {
+                color: var(--green-500);
+                text-align: center;
+                max-width: 20rem;
+                font-family: "Montserrat", sans-serif;
+            }
+            form {
+                display: flex;
+                align-items: center;
+                margin-top: 1.5rem;
+                width: 100%;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+                padding: 1rem;
+                input {
+                    padding: 0.5rem;
+                    margin-bottom: 2rem;
+                    width: 22rem;
+                    max-width: 30rem;
+                    border: 1px solid var(--blue-500);
+                    border-radius: 5px;
+                    outline: none;
+                    color: var(--gray-700);
+                    &.submit {
+                        background-color: var(--green-500);
+                        color: var(--white);
+                        border: none;
+                        outline: none;
+                        border-radius: 5px;
+                        padding: 0.7rem;
+                        transition: filter 0.2s;
+                        cursor: pointer;
+                        &:hover {
+                            filter: brightness(0.8);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.modal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    h1 {
+        color: var(--blue-500);
+        max-width: 25rem;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+    }
+    h2 {
+        color: var(--blue-500);
+        font-family: "Montserrat", sans-serif;
+    }
+    a {
+        color: var(--white);
+        background-color: var(--green-500);
+        padding: 1rem;
+        border-radius: 5px;
+        width: 10rem;
+        text-align: center;
+        margin-top: 5rem;
+        font-family: "Mulish", sans-serif;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            list-style: none;
+            li {
+                font-size: 1.3rem;
+                span {
+                    color: var(--blue-500);
+                    font-family: "Mulish", sans-serif;
+                    span {
+                        color: var(--green-500);
+                        font-family: "Mulish", sans-serif;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,24 +1,31 @@
 .card {
     display: flex;
+    align-items: center;
+    justify-content: left;
     background-color: var(--white);
     box-shadow: 2px 2px 20px var(--gray-200);
     border-radius: 5px;
-    margin-right: 3rem;
-    margin-bottom: 2rem;
+    width: 90%;
+    height: fit-content;
+    margin: 1rem auto;
+    img {
+        max-width: fit-content;
+        max-height: fit-content;
+    }
     div {
         display: flex;
         flex-direction: column;
         align-items: left;
         justify-content: left;
-        padding: 1rem 2rem;
-        margin: auto auto;
+        padding: 2rem 2rem;
         width: 100%;
         h2 {
             color: var(--blue-500);
-            max-width: 12rem;
-            font-family: 'Montserrat', sans-serif;
+            max-width: 20rem;
+            font-family: "Montserrat", sans-serif;
+            max-height: 5rem;
         }
-        button{
+        button {
             background-color: var(--green-500);
             border: none;
             outline: none;
@@ -28,10 +35,36 @@
             max-width: 7rem;
             border-radius: 5px;
             transition: filter 0.2s;
-            font-family: 'Mulish', sans-serif;
-            &:hover{
+            font-family: "Mulish", sans-serif;
+            &:hover {
                 filter: brightness(0.8);
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        background-color: var(--white);
+        box-shadow: 2px 2px 20px var(--gray-200);
+        border-radius: 5px;
+        width: fit-content;
+        height: 10rem;
+        margin: 1rem auto;
+        img {
+            max-width: 12rem;
+            max-height: 10rem;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: left;
+            padding: 2rem 2rem;
+            width: 100%;
         }
     }
 }

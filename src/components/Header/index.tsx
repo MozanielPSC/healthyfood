@@ -35,7 +35,8 @@ export function Header() {
                     </div>
                 </IconContext.Provider>
             </div>
-            <div className={style}>
+            
+           <div className={style}>
                 <ul>
                     <li>
                         HEALTHY RECIPES
@@ -52,6 +53,7 @@ export function Header() {
                         </Link>
                     </li>
                 </ul>
+                
             </div>
         </div>
     )
