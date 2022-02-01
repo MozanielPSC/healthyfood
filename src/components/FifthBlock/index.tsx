@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 export function FifthBlock() {
     return (
         <>
-            <div className={styles.container}>
+            <div id="join" className={styles.container}>
                 <div className={styles.body}>
                     <div>
                     <p>Join our membership to get special offer</p>

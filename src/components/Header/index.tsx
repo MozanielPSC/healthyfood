@@ -4,6 +4,7 @@ import { GoThreeBars } from "react-icons/go";
 import { IconContext } from "react-icons";
 import { useState } from "react";
 import Link from "next/link";
+import { Link as Scroll } from "react-scroll";
 
 export function Header() {
     const [mobileNav, setMobileNav] = useState(false);
@@ -23,9 +24,15 @@ export function Header() {
                 <h1 className="animate__animated animate__fadeInRight">HealthyFood</h1>
             </div>
             <div className={styles.right}>
-                <a>HEALTHY RECIPES</a>
-                <a>BLOG</a>
-                <a>JOIN</a>
+                <Scroll to="recipes" smooth={true} duration={1000}>
+                    <a>HEALTHY RECIPES</a>
+                </Scroll>
+                <Scroll to="blog" smooth={true} duration={1000}>
+                    <a>BLOG</a>
+                </Scroll>
+                <Scroll to="join" smooth={true} duration={1000}>
+                    <a>JOIN</a>
+                </Scroll>
                 <Link href={"/register"}>
                     <a className={styles.last}>REGISTER</a>
                 </Link>
@@ -35,25 +42,31 @@ export function Header() {
                     </div>
                 </IconContext.Provider>
             </div>
-            
-           <div className={style}>
+
+            <div className={style}>
                 <ul>
-                    <li>
-                        HEALTHY RECIPES
-                    </li>
-                    <li>
-                        BLOG
-                    </li>
-                    <li>
-                        JOIN
-                    </li>
+                    <Scroll onClick={showMobileNav} to="recipes" smooth={true} duration={1000}>
+                        <li>
+                            HEALTHY RECIPES
+                        </li>
+                    </Scroll>
+                    <Scroll onClick={showMobileNav} to="blog" smooth={true} duration={1000}>
+                        <li>
+                            BLOG
+                        </li>
+                    </Scroll>
+                    <Scroll onClick={showMobileNav} to="join" smooth={true} duration={1000}>
+                        <li>
+                            JOIN
+                        </li>
+                    </Scroll>
                     <li className={styles.last}>
                         <Link href={"/register"}>
-                        <a>REGISTER</a>
+                            <a>REGISTER</a>
                         </Link>
                     </li>
                 </ul>
-                
+
             </div>
         </div>
     )

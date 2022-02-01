@@ -25,7 +25,7 @@ export function FourthBlock() {
     imglabel: "/images//bloco_image_3.svg",  
   }
   const card4 = {
-    text:"What Means to Be Healthy",
+    text:"What Means to Be An Healthy Person",
     username:"Kevin Ibrahim",
     profileimg:"/images/perfil4.jpg",
     imglabel: "/images//bloco_image_4.svg",  
@@ -34,7 +34,6 @@ export function FourthBlock() {
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
-    setStyle(styles.disabled);
   };
 
   const handleRightClick = (e) => {
@@ -44,7 +43,7 @@ export function FourthBlock() {
   };
   return (
     <>
-      <div className={styles.container}>
+      <div id="blog" className={styles.container}>
         <div>
           <h1>Read Our Blog</h1>
           <p>Far far away, behind the word mountains, far from the countries

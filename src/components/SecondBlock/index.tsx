@@ -18,7 +18,7 @@ export function SecondBlock() {
         title:'Cherry Cobbler on the Grill'
     }
     return (
-        <div className={styles.container}>
+        <div id="recipes" className={styles.container}>
             <div className={styles.header}>
                 <h1>Our Best Recipes</h1>
                 <p>Far far away behind the word mountains, far from the countries Vakalia and Consonantia, there live the blind texts. </p>
